@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="lotte">
 <head>
   <meta charset="utf-8">
   <title>Lotte demo - Angular JS</title>
@@ -18,7 +18,7 @@
       </div>
     </div>
   </div>
-  
+
   <div class="navbar">
     <div class="navbar-inner">
       <div class="nav-collapse">
@@ -37,40 +37,10 @@
       </div>
     </div>
   </div>
+  
+  <div ng-view></div>
 
-  <div class="row">
-    <div class="span3" id="list-view">
-      <ul class="well nav nav-pills nav-stacked">
-        <li class="{{setActive(tString.id)}}" ng-repeat="tString in tStrings">
-          <a  href="#" ng-click="setCurrentTString(tString)">{{tString.source}}</a>
-        </li>
-      </ul>
-    </div>
-    <div class="span9">
-      <span class="label">English</span>
-      <div class="well" id="full-text">{{currentTString.source}}</div>
-      <span class="label">Catalan</span>
-      <div class="well">
-        <textarea ng-model="currentTString.translation" style="width:100%" spellcheck="true">
-        </textarea>
-        <div class="btn-group">
-          <button class="btn" id="js-copysource" ng-click="copyCurrentSource()">Copy source</button>
-          <button class="btn" id="js-revert" ng-click="revertCurrent()">Revert</button>
-          <button class="btn" ng-click="spellCheck(tString)">Spellcheck</button>
-        </div>
-      </div>
-      <ul class="nav nav-tabs">
-        <li class="active"><a href="#">Suggestions</a></li>
-        <li><a href="#">Details</a></li>
-        <li><a href="#">Instructions</a></li>
-        <li><a href="#">History</a></li>
-      </ul>
-      <div class="tab-content">
-          <div class="well">Suggestion 1</div>
-          <div class="well">Suggestion 2</div>
-      </div>
-    </div>
-  </div>
+ 
 
 </div><!--/.container-->
 
@@ -79,36 +49,11 @@
   <script src="lib/angular/angular.js"></script>
   <script src="js/app.js"></script>
   <script src="js/services.js"></script>
+  <script src="lib/angular/angular-resource.js"></script>
   <script src="js/controllers.js"></script>
   <script src="js/filters.js"></script>
   <script src="js/directives.js"></script>
   </body>
 </html>
-
-<!-- <!doctype html>
-<html lang="en" ng-app="myApp">
-<head>
-  <meta charset="utf-8">
-  <title>My AngularJS App</title>
-  <link rel="stylesheet" href="css/app.css"/>
-</head>
-<body>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
-
-  <div ng-view></div>
-
-  <div>Angular seed app: v<span app-version></span></div>
-
-  <script src="lib/angular/angular.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/services.js"></script>
-  <script src="js/controllers.js"></script>
-  <script src="js/filters.js"></script>
-  <script src="js/directives.js"></script>
-</body>
-</html> -->
 
 
