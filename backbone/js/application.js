@@ -8,6 +8,7 @@
   // ------------
   window.SourceEntities = Backbone.Collection.extend({
     model: SourceEntity,
+    url: '/tstrings'
   });
 
   // Views
@@ -21,7 +22,7 @@
 
   window.SourceEntityListView = Backbone.View.extend({
     tagName: 'ul',
-    className: 'nav nav-tabs nav-stacked',
+    className: 'well nav nav-pills nav-stacked',
 
     initialize: function () {
       this.model.bind('reset', this.render, this);
@@ -55,9 +56,15 @@
       'click': 'loadTranslation',
     },
     
-    loadTranslation: function(event) {
+    loadTranslation: function(event) {      
+      event.preventDefault();
+
+      window.router.navigate('tstring/' + this.model.get('id'), {trigger: true})
       $(this.el).addClass('active');
-      $('#full-text').text(this.model.get('string'));
+      $(this.el).siblings().removeClass('active');
+
+      $('#full-text').text(this.model.get('source'));
+      $('#translation-text').text(this.model.get('translation'));
     }
   });
 
@@ -90,27 +97,30 @@
   window.AppRouter = Backbone.Router.extend({
 
       routes: {
-          '':               'start',
-          ':id':            'focus', 
-          'search/:query':  'search',
+          ''                   :'start',
+          '/tstrings'          :'start',
+          '/tstring/:tstringId':'focus', 
           
       },
 
       start: function() {
           var i;
           this.entities = new SourceEntities();
-          for (i=0; i<25; i++) {
-              this.entities.add(new SourceEntity({id: i, string: 'lala' + i}))
-          }
+          this.entities.fetch({ url: "../data/sources.json"});
+
           this.entityListView = new SourceEntityListView({ model: this.entities });
           $('#list-view').html(this.entityListView.render().el);
       },
 
       focus: function(id) {
         // url for a single string
-        alert('focusing on string with id=' +id)
+        console.log('focusing on string with id=' +id)
       }
 
   });
+
+  window.router = new AppRouter();
+  Backbone.history.start({pushState: true, root: '/lotte-js-mvc-tests/backbone/'});
+
 
 })(jQuery);

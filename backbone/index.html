@@ -40,7 +40,7 @@
 
   <div class="row">
     <div class="span3" id="list-view">
-      <ul class="nav nav-tabs nav-stacked">
+      <ul class="well nav nav-pills nav-stacked">
       </ul>
     </div>
     <div class="span9">
@@ -48,7 +48,7 @@
       <div class="well" id="full-text">This is the full source text</div>
       <span class="label">Catalan</span>
       <div class="well">
-        <textarea style="width:100%" spellcheck="true"></textarea>
+        <textarea id="translation-text" style="width:100%" spellcheck="true"></textarea>
         <div class="btn-group">
           <button class="btn" id="js-copysource">Copy source</button>
           <button class="btn" id="js-revert">Revert</button>
@@ -80,14 +80,8 @@
   <script src="js/bootstrap.js"></script>
   <script src="js/data.js"></script>
   <script src="js/application.js"></script>
-  <script>
-  $(document).ready(function(){
-    window.app = new AppRouter();
-    Backbone.history.start();
-  })
-  </script>
   <script type="text/template" id="sourceentity-template">
-    <a data-source="<%= id %>"><%= string %></a>
+    <a data-source="<%= id %>"><%= source %></a>
   </script>
   </body>
 </html>
