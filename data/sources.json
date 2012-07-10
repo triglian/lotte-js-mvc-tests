@@ -2,7 +2,7 @@
     {
         "id": "1",
         "source":"erase",
-        "translation":""
+        "translation":"a translation"
     },
     {
         "id": "2",
@@ -17,7 +17,7 @@
     {
         "id": "4",
         "source":"cause",
-        "translation":""
+        "translation":"haha"
     },
     {
         "id": "5",
